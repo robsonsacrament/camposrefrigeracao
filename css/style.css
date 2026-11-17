@@ -1,0 +1,351 @@
+/* ============================================================
+   CAMPOS CLIMATIZAÇÃO - STYLES (Padrão Magno)
+   ============================================================ */
+
+:root {
+  --primary: oklch(0.72 0.16 155);
+  --primary-foreground: oklch(0.1 0.04 155);
+  --navy: oklch(0.22 0.06 230);
+  --navy-deep: oklch(0.16 0.05 230);
+  --navy-foreground: oklch(0.98 0.005 250);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.05 230);
+  --card: oklch(1 0 0);
+  --secondary: oklch(0.965 0.006 250);
+  --muted: oklch(0.965 0.006 250);
+  --muted-foreground: oklch(0.5 0.03 230);
+  --border: oklch(0.92 0.01 255);
+  --whatsapp: oklch(0.72 0.19 150);
+  --star: oklch(0.82 0.17 85);
+  --shadow-soft: 0 4px 20px -8px oklch(0.22 0.06 230 / 0.18);
+  --shadow-card: 0 18px 40px -18px oklch(0.16 0.05 230 / 0.45);
+  --shadow-cta: 0 10px 25px -10px oklch(0.72 0.16 155 / 0.7);
+  --radius: 0.75rem;
+}
+
+*, ::after, ::before { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; line-height: 1.5; }
+body { background-color: var(--background); color: var(--foreground); font-family: "Inter", sans-serif; }
+h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--navy); }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: all 0.2s; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+.text-center { text-align: center; }
+.text-light { color: var(--navy-foreground); }
+.text-muted { color: var(--muted-foreground); }
+.w-full { width: 100%; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.hidden { display: none !important; }
+
+/* --- BOTÕES --- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.85rem 1.6rem; border-radius: 9999px;
+  font-weight: 700; font-family: "Montserrat", sans-serif; font-size: 0.95rem;
+  transition: transform 0.25s, filter 0.25s;
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.07); }
+.btn-cta { background: var(--primary); color: #fff; box-shadow: var(--shadow-cta); }
+.btn-outline-light { border: 2px solid var(--navy-foreground); color: var(--navy-foreground); }
+.btn-outline-light:hover { background: var(--navy-foreground); color: var(--navy); }
+.btn-lg { padding: 1rem 2rem; font-size: 1.05rem; }
+
+/* ============================================================
+   HEADER (Padrão Magno - CORRIGIDO)
+   ============================================================ */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: #fff; box-shadow: var(--shadow-soft);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 0.75rem 1.25rem;
+}
+
+/* Logo completo */
+.logo-link { display: flex; align-items: center; }
+.logo-full {
+  display: flex; flex-direction: column; line-height: 1.1;
+  background: var(--primary); color: #fff;
+  padding: 6px 14px; border-radius: 10px;
+}
+.logo-main { font-family: "Montserrat"; font-weight: 800; font-size: 1.1rem; }
+.logo-sub { font-family: "Montserrat"; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.5px; }
+
+/* Desktop Nav - escondido no mobile, visível no desktop */
+.desktop-nav { display: none; }
+.desktop-nav ul { display: flex; gap: 1.5rem; font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+.desktop-nav a:hover { color: var(--primary); }
+
+/* CTA Desktop - escondido no mobile */
+.desktop-cta { display: none; }
+
+/* Botão Mobile - visível no mobile, escondido no desktop */
+.mobile-toggle {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.5rem; color: var(--navy);
+}
+
+/* Menu Mobile - FORÇADAMENTE OCULTO POR PADRÃO */
+.mobile-nav {
+  display: none !important; /* ← CORREÇÃO PRINCIPAL */
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.25rem 1.5rem;
+  flex-direction: column; gap: 1rem;
+}
+.mobile-nav.is-open {
+  display: flex !important; /* ← Só aparece quando tiver essa classe */
+}
+.mobile-nav ul { display: flex; flex-direction: column; gap: 0.75rem; font-weight: 500; color: var(--navy); }
+.mobile-nav a { display: block; padding: 0.5rem 0; }
+.mobile-nav a:hover { color: var(--primary); }
+
+/* BREAKPOINT DESKTOP (1024px+) */
+@media (min-width: 1024px) {
+  .desktop-nav { display: block; }
+  .desktop-cta { display: inline-flex; }
+  .mobile-toggle { display: none; }
+  .mobile-nav { display: none !important; } /* Nunca aparece no desktop */
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: var(--navy); color: #fff; position: relative; overflow: hidden;
+  padding: 4rem 0; min-height: 80vh;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--navy-deep), var(--navy) 90%);
+  z-index: 1;
+}
+.hero > * { position: relative; z-index: 2; }
+.hero-grid { display: grid; gap: 3rem; align-items: center; }
+.hero-tag {
+  color: var(--primary); font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem;
+}
+.hero h1 { font-size: 2rem; line-height: 1.2; margin-bottom: 1.5rem; color: #fff; }
+.hero-sub { opacity: 0.9; margin-bottom: 2rem; font-size: 1rem; line-height: 1.6; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-image-container { display: flex; justify-content: center; }
+.hero-img {
+  border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: rotate(2deg); border: 4px solid rgba(255,255,255,0.1);
+  max-width: 380px; width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.2fr 0.8fr; }
+  .hero h1 { font-size: 3.25rem; }
+  .hero-img { max-width: 450px; }
+}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+.section-padding { padding: 5rem 0; }
+.section-padding-sm { padding: 3.5rem 0; }
+.bg-secondary { background-color: var(--secondary); }
+.bg-navy { background-color: var(--navy); color: var(--navy-foreground); }
+.bg-navy h2 { color: var(--navy-foreground); }
+.divider { width: 60px; height: 4px; background: var(--primary); border-radius: 2px; margin: 0.5rem auto 3rem; }
+
+/* ============================================================
+   ÍCONES DESTAQUE
+   ============================================================ */
+.icons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-icon { background: var(--card); padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow-soft); }
+.icon-circle {
+  width: 56px; height: 56px; background: var(--primary); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.card-icon h3 { font-size: 0.9rem; }
+
+@media (min-width: 768px) { .icons-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ============================================================
+   A EMPRESA
+   ============================================================ */
+.about-grid { display: grid; gap: 3rem; align-items: center; }
+.about-img { border-radius: 1.5rem; box-shadow: var(--shadow-card); width: 100%; }
+.about-grid div p { line-height: 1.7; margin-bottom: 1rem; }
+
+@media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   SERVIÇOS
+   ============================================================ */
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card { background: var(--card); border-radius: 1rem; box-shadow: var(--shadow-card); overflow: hidden; transition: transform 0.3s; }
+.card:hover { transform: translateY(-5px); }
+.card-img-wrap { overflow: hidden; }
+.service-img { width: 100%; height: 180px; object-fit: cover; transition: transform 0.5s; }
+.card:hover .service-img { transform: scale(1.05); }
+.card-body { padding: 1.25rem; }
+.card-body h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.card-body p { font-size: 0.85rem; color: var(--muted-foreground); margin-bottom: 1rem; line-height: 1.5; }
+.card-link { color: var(--primary); font-weight: bold; font-size: 0.85rem; }
+.card-link:hover { text-decoration: underline; }
+
+@media (min-width: 768px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ============================================================
+   COMO TRABALHAMOS
+   ============================================================ */
+.steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.step-number {
+  width: 60px; height: 60px; background: var(--navy); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem; font-family: "Montserrat"; font-weight: 800;
+  font-size: 1.1rem; border: 4px solid var(--primary);
+}
+.step h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.step p { font-size: 0.85rem; }
+
+@media (min-width: 768px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ============================================================
+   PROJETOS
+   ============================================================ */
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.project-item { overflow: hidden; border-radius: 1rem; }
+.project-item img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform 0.5s; }
+.project-item:hover img { transform: scale(1.05); }
+
+@media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ============================================================
+   MARCAS
+   ============================================================ */
+.brands-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; opacity: 0.6; margin-top: 1rem; }
+.brands-list span { font-family: "Montserrat"; font-weight: 800; font-size: 1.3rem; }
+
+/* ============================================================
+   DEPOIMENTOS
+   ============================================================ */
+.testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+/* Força o fundo branco e o texto escuro para garantir contraste */
+.testimonial-card { 
+  padding: 2rem; 
+  background-color: var(--card); /* Fundo branco */
+  color: var(--foreground); /* Texto escuro (cinza/chumbo) */
+}
+
+.stars { 
+  color: var(--star); 
+  font-size: 1.2rem; 
+  letter-spacing: 2px; 
+  margin-bottom: 1rem; 
+}
+
+.testimonial-card blockquote { 
+  font-style: italic; 
+  line-height: 1.6; 
+  margin-bottom: 1rem; 
+  font-size: 0.95rem; 
+  color: var(--foreground); /* Garante que a frase fique escura */
+}
+
+.testimonial-card figcaption { 
+  font-family: "Montserrat"; 
+  font-weight: 700; 
+  font-size: 0.85rem; 
+  color: var(--navy); /* Nome do cliente em azul escuro para destaque */
+}
+
+@media (min-width: 768px) { 
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); } 
+}
+
+/* ============================================================
+   REGIÕES
+   ============================================================ */
+.regions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+.region-btn {
+  border: 1px solid var(--border); border-radius: 0.75rem;
+  padding: 0.75rem; text-align: center; font-size: 0.9rem; font-weight: 500;
+  transition: border-color 0.2s, color 0.2s;
+}
+.region-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+@media (min-width: 768px) { .regions-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ============================================================
+   BLOG/DICAS
+   ============================================================ */
+.tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.tip-img { width: 100%; height: 110px; object-fit: cover; }
+.tip-body { padding: 1rem; }
+.tip-body h3 { font-size: 0.85rem; line-height: 1.4; }
+
+@media (min-width: 768px) { .tips-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item { border: 1px solid var(--border); border-radius: 0.75rem; overflow: hidden; background: var(--card); }
+.faq-question {
+  padding: 1.25rem; font-weight: 700; cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--navy); font-size: 0.95rem;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-toggle { font-size: 1.2rem; color: var(--primary); transition: transform 0.3s; }
+.faq-item[open] .faq-toggle { transform: rotate(45deg); }
+.faq-answer { padding: 0 1.25rem 1.25rem; color: var(--muted-foreground); font-size: 0.9rem; line-height: 1.6; }
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta-final { background: var(--navy); padding: 5rem 0; border-top: 4px solid var(--primary); }
+.map-container { max-width: 800px; margin: 2rem auto 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { background: var(--navy-deep); color: rgba(255,255,255,0.8); padding: 3rem 0 1.5rem; }
+footer h3 { color: #fff; margin-bottom: 1rem; font-size: 1rem; }
+footer a:hover { color: var(--primary); }
+.footer-intro { margin-bottom: 2rem; }
+.footer-intro p { font-size: 0.9rem; opacity: 0.8; max-width: 600px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; padding-top: 2rem; }
+.footer-grid ul { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 3rem; padding-top: 1.5rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; gap: 1rem; font-size: 0.8rem; opacity: 0.7;
+}
+
+@media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ============================================================
+   WHATSAPP FLUTUANTE
+   ============================================================ */
+.whatsapp-float {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--whatsapp); color: #fff;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 100; transition: transform 0.2s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* ============================================================
+   ANIMAÇÕES REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
